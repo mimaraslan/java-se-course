@@ -43,6 +43,7 @@ local.properties
 mvnw.*
 
 ### IntelliJ ###
+.idea
 .idea/
 *.iml
 *.ipr
