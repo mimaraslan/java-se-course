@@ -17,8 +17,8 @@ public class Car {
     */
 
         // sayi teker
-        int teker = 4;
-
+       // int teker = 4;
+        byte teker = 4;
 
         // sayi  direksiyon
         int direksiyon = 1;
@@ -37,8 +37,8 @@ public class Car {
 
 
         //   sayi model yılı
-        int modelYili = 2024;
-
+      //  int modelYili = 2024;
+        short modelYili = 2024;
 
         //   yazi renk
         String renk = "Gri";
