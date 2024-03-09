@@ -1,5 +1,6 @@
 package com.mimaraslan;
 
+// sinif bir kaliptir
 public class Kedi {  // scope  kapsam
 
     // declaration - deklere - bildiri bildirmek
