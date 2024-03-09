@@ -1,5 +1,10 @@
 package com.mimaraslan;
 
+import com.mimaraslan.base.Personel;
+import com.mimaraslan.departman.Mudur;
+import com.mimaraslan.departman.Muhasebeci;
+import com.mimaraslan.departman.Yazilimci;
+
 public class AppMain {
     public static void main(String[] args) {
 
@@ -45,5 +50,8 @@ public class AppMain {
 
         muhasebeci.bilgisiniYaz(muhasebeci);
         System.out.println("----------------------------");
+
+        Personel personel = new Personel();
+        personel.hesapla((short) 10, 10, 10);
     }
 }

@@ -1,5 +1,6 @@
-package com.mimaraslan;
+package com.mimaraslan.departman;
 
+import com.mimaraslan.base.Personel;
 import lombok.*;
 
 @NoArgsConstructor

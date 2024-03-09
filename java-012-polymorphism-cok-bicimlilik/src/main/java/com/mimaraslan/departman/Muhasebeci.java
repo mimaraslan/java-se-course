@@ -1,5 +1,6 @@
-package com.mimaraslan;
+package com.mimaraslan.departman;
 
+import com.mimaraslan.base.Personel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,6 @@ public class Muhasebeci extends Personel {
         System.out.println("Adı: " + muhasebeci.getAdi() );
         System.out.println("Soyadı: " + muhasebeci.getSoyadi() );
         // TODO bu kısma gelecek şeyler var.
-
 
         String yemin;
         if(muhasebeci.getYeminDurumu()) { // true
