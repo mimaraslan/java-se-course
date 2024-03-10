@@ -1,6 +1,7 @@
 package com.mimaraslan;
 
-public class Robot extends Hayvan {
+public class Robot extends Hayvan implements SanayiTeknolojiBakanligiKurallari {
+
     @Override
     public void sesVer() {
 
@@ -21,5 +22,14 @@ public class Robot extends Hayvan {
 
     }
 
+    @Override
+    public void chipNoAl() {
 
+    }
+
+    @Override
+    public void bakimHizmetiAl() {
+     //   SanayiTeknolojiBakanligiKurallari.super.bakimHizmetiAl();
+        System.out.println("Robot: bakimHizmetiAl");
+    }
 }

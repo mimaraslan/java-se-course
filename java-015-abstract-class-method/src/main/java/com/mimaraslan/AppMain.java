@@ -5,5 +5,13 @@ public class AppMain {
 
      //   Hayvan hayvan = new Hayvan();
 
+        Kedi kedi = new Kedi();
+        kedi.hareketEt();
+
+
+        Canli canli = new Canli();
+        canli.
+
+
     }
 }
