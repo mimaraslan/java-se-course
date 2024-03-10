@@ -6,7 +6,4 @@ public interface UlastirmaDairesi {
 
     public Boolean ehliyetDurumu(Boolean durum);
 
-
-
-
 }
