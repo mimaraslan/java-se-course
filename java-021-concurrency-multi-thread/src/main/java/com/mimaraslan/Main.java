@@ -1,6 +1,6 @@
 package com.mimaraslan;
 
-public class AppMain {
+public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
     }
