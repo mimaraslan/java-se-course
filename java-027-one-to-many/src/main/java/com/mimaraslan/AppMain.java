@@ -44,14 +44,6 @@ public class AppMain {
         order3.setCustomer(customer1);
 
 
-/*
-        Customer customer2 = new Customer();
-        customer2.setFirstName("Tunahan");
-        customer2.setLastName("Karakök");
-
-
-        Customer customer3 = new Customer("Atila", "Güneş");
-*/
 
         Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -64,9 +56,6 @@ public class AppMain {
                 session.save(order1);
                 session.save(order2);
                 session.save(order3);
-
-          //  session.save(customer2);
-          //  session.save(customer3);
 
             transaction.commit();
 

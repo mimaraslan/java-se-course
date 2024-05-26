@@ -5,7 +5,9 @@ import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Setter
@@ -21,7 +23,8 @@ public class Customer {
   //  1 - m
     @OneToMany (mappedBy = "customer", fetch = FetchType.LAZY)
     @Fetch(FetchMode.SELECT)
-    private Set<Order> orders = new HashSet<Order>();
+   // private List<Order> orders = new ArrayList<>();
+    private Set<Order> orders = new HashSet<>();
 
 
     @Id
