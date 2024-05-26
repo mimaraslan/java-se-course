@@ -1,17 +1,29 @@
 package com.mimaraslan.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
-import java.util.Date;
+@Setter
+@Getter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 
 @Entity
 @Table(name = "CUSTOMERS")
 public class Customer {
 
+
+  // FIXME  modernleştirmek için incele
+    @OneToOne (mappedBy = "customer",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+  private  CustomerDetail customerDetail;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CUSTOMER_ID")
-    private Integer id;
+    private int customerId;
 
     @Column(name = "FIRST_NAME", length = 50, nullable = false)
     private String firstName;
@@ -19,67 +31,11 @@ public class Customer {
     @Column(name = "LAST_NAME", length = 55)
     private String lastName;
 
-    @Temporal(TemporalType.DATE)
-    @Column (name = "DATE_CREATE")
-    private Date createDate;
 
-/*
-    @Transient   // Bu alan tabloya kolon olarak eşlenmez!
-    private String info;
-*/
+  public Customer(String firstName, String lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
 
-
-
-//   private String address;
-
-/*
-    private String country;
-    private String city;
-    private String state;
-    private String zip;
-*/
-
-
-    @Embedded
-    private Address address;
-
-
-
-    public Customer() {
-    }
-
-    public Customer(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-
-    public int getId() {
-        return id;
-    }
-/*
-    public void setId(int id) {
-        this.id = id;
-    }
-*/
-
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
 }
