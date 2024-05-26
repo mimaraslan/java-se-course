@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Setter
@@ -35,8 +36,9 @@ public class Order {
     @Column (name = "CODE", length = 50)
     private String code;
 
-    @Column (name = "AMOUNT") // , precision = 6, scale = 2
-    private int amount;
+    // FIXME BigDecimal virgüllü sayı yapılacak.
+    @Column (name = "AMOUNT", precision = 6, scale = 2 )   //
+    private BigDecimal amount;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATE_CREATE", length = 40)

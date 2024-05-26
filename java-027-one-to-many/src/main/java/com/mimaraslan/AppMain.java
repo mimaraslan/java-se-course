@@ -7,6 +7,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class AppMain {
@@ -21,19 +22,19 @@ public class AppMain {
         order1.setProduct("Elma");
         order1.setCode("99999");
         order1.setCreateDate(new Date());
-        order1.setAmount(10);
+        order1.setAmount(BigDecimal.valueOf(10.2));
 
         Order order2 = new Order();
         order2.setProduct("Armut");
         order2.setCode("44444");
         order2.setCreateDate(new Date());
-        order2.setAmount(8);
+        order2.setAmount(BigDecimal.valueOf(6.77));
 
         Order order3 = new Order();
         order3.setProduct("Vişne");
         order3.setCode("33333");
         order3.setCreateDate(new Date());
-        order3.setAmount(15);
+        order3.setAmount(BigDecimal.valueOf(15.12));
 
         customer1.getOrders().add(order1);
         customer1.getOrders().add(order2);
