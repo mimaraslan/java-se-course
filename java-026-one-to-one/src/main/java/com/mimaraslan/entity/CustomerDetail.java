@@ -16,6 +16,7 @@ import java.util.Date;
 @Table(name = "CUSTOMER_DETAILS")
 public class CustomerDetail {
 
+
     @OneToOne
     @JoinColumn
     private Customer customer;
@@ -37,7 +38,6 @@ public class CustomerDetail {
     @Temporal(TemporalType.DATE)
     @Column (name = "DATE_CREATE")
     private Date createDate;
-
 
 
 

@@ -2,6 +2,11 @@ package com.mimaraslan.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -13,15 +18,10 @@ import lombok.*;
 @Table(name = "CUSTOMERS")
 public class Customer {
 
-
-  // FIXME  modernleştirmek için incele
-
-    @OneToOne (mappedBy = "customer",
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-  private  CustomerDetail customerDetail;
-
-
+  //  1 - m
+    @OneToMany (mappedBy = "customer", fetch = FetchType.LAZY)
+    @Fetch(FetchMode.SELECT)
+    private Set<Order> orders = new HashSet<Order>();
 
 
     @Id
