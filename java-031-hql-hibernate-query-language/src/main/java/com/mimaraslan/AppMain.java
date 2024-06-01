@@ -10,7 +10,7 @@ import org.hibernate.query.Query;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
+import java.util.Objects;
 
 public class AppMain {
 
@@ -19,6 +19,7 @@ public class AppMain {
         Customer customer1 =  new Customer();
         customer1.setFirstName("Adem");
         customer1.setLastName("Kok");
+        customer1.setAge((byte) 25);
 
         CustomerDetail customerDetail1 = new CustomerDetail();
         customerDetail1.setAddress("Berlin");
@@ -35,6 +36,7 @@ public class AppMain {
         Customer customer2 =  new Customer();
         customer2.setFirstName("Tunahan");
         customer2.setLastName("Karakök");
+        customer1.setAge((byte) 27);
 
         CustomerDetail customerDetail2 = new CustomerDetail();
         customerDetail2.setAddress("Ankara");
@@ -48,6 +50,9 @@ public class AppMain {
 
 
         Customer customer3 =  new Customer("Atila", "Güneş");
+        customer1.setAge((byte) 18);
+
+
         CustomerDetail customerDetail3 = new CustomerDetail( );
         customerDetail3.setAddress("İzmir");
         customerDetail3.setPhoneNumber("35353535");
@@ -107,6 +112,8 @@ public class AppMain {
 
 
             System.out.println("================ DELETE ====================");
+
+
             Query query3 = session.createQuery("DELETE FROM CustomerDetail WHERE customerId = :customerId")
                     .setParameter("customerId", 1);
 
@@ -114,14 +121,63 @@ public class AppMain {
             System.out.println("CustomerDetail tablosunda: " + queryResult3);
 
 
+            // FIXME   cascade = CascadeType.ALL yapmaya çalışılacak.
+            Query query4 = session.createQuery("DELETE FROM Customer WHERE customerId = :customerId")
+                    .setParameter("customerId", 1);
 
-            System.out.println("========== AVG SUM MIN MAX COUNT ===========");
+            int queryResult4 = query4.executeUpdate();
+            System.out.println("Customer tablosunda: " + queryResult4);
+
+
+
+            System.out.println("========== COUNT AVG SUM MIN MAX  ===========");
+            Query query5 = session.createQuery("SELECT COUNT (*) FROM Customer");
+
+            Long countResult = (Long) query5.uniqueResult();
+            System.out.println("COUNT: " + countResult);
+
+            // TODO : SUM MIN MAX AVG sorguları eklenecek.
+
+
 
 
             System.out.println("================= JOIN ====================");
 
+               /*
+                       SELECT *
+                        FROM Table A
+                        RIGHT JOIN Table B
+                        ON A.id = B.id
+
+                    */
+
+                Query query6 = session.createQuery(  "SELECT c.firstName, c.lastName " +
+                                                        "FROM Customer  c "  +
+                                                        "RIGHT JOIN CustomerDetail  d  " +
+                                                        "ON c.customerId = d.customerId");
+
+/*
+            // Java 10+ son sürümlerde 3 tırnak
+            Query query6 = session.createQuery("""
+                                            SELECT c.firstName, c.lastName
+                                            FROM Customer  c
+                                            RIGHT JOIN CustomerDetail  d
+                                            ON c.customerId = d.customerId""");
+            */
 
 
+
+
+
+            List<Object> custList6 = query6.list();
+
+            // FIXME Object - Customer arasında yazdırma için kod geliştirilecek.
+  /*          for (Customer cust6 : custList6) {
+                System.out.println(cust6.getFirstName() + " " + cust6.getLastName() + " " + cust6.getAge() + " " +
+                         cust6.getCustomerDetail().getAddress() +
+                         cust6.getCustomerDetail().getCreateDate())  ;
+            }
+*/
 
             transaction.commit();
 

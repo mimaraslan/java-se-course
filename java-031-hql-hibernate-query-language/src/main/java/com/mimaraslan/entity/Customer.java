@@ -30,6 +30,10 @@ public class Customer {
     private String lastName;
 
 
+    @Column(name = "AGE")
+    private byte age;
+
+
     public Customer(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
