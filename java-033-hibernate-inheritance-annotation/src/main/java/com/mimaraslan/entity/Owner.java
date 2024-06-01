@@ -1,12 +1,6 @@
 package com.mimaraslan.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
-
-@Setter
-@Getter
-@ToString
-@AllArgsConstructor
+import javax.persistence.*;
 
 @Entity
 @Table(name="OWNER")
@@ -30,6 +24,22 @@ public class Owner extends Person {
         super(firstname, lastname);
 
         this.stocks = stocks;
+        this.partnershipStake = partnershipStake;
+    }
+
+    public Long getStocks() {
+        return stocks;
+    }
+
+    public void setStocks(Long stocks) {
+        this.stocks = stocks;
+    }
+
+    public Long getPartnershipStake() {
+        return partnershipStake;
+    }
+
+    public void setPartnershipStake(Long partnershipStake) {
         this.partnershipStake = partnershipStake;
     }
 }

@@ -1,14 +1,8 @@
 package com.mimaraslan.entity;
 
-import lombok.*;
 import java.util.Date;
-import jakarta.persistence.*;
 
-
-@Setter
-@Getter
-@ToString
-@AllArgsConstructor
+import javax.persistence.*;
 
 @Entity
 @Table(name="EMPLOYEE")
@@ -35,5 +29,19 @@ public class Employee extends Person {
         this.joiningDate = joiningDate;
     }
 
+    public Date getJoiningDate() {
+        return joiningDate;
+    }
 
+    public void setJoiningDate(Date joiningDate) {
+        this.joiningDate = joiningDate;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
 }

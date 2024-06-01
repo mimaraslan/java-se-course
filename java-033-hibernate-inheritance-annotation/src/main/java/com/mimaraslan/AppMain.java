@@ -11,48 +11,34 @@ import org.hibernate.Transaction;
 import java.util.Date;
 
 public class AppMain {
-
     public static void main(String[] args) {
 
-        Person person = new Person();
-      //  person.setPersonId(1L);
-        person.setFirstname("Abdullah");
-        person.setLastname("Demirel");
+        Person person = new Person("A", "B");
+       // person.setPersonId(1L);
 
-        Employee employee = new Employee();
-      //  employee.setPersonId(2L);
-        employee.setFirstname("Oğuz");
-        employee.setLastname("Akkaya");
-        employee.setDepartmentName("Marketing");
-        employee.setJoiningDate( new Date());
+        Employee employee = new Employee("C", "D", "Marketing", new Date());
+       // employee.setPersonId(2L);
 
-        Owner owner = new Owner();
-      //  owner.setPersonId(3L);
-        owner.setFirstname("Sadık");
-        owner.setLastname("Kuzu");
-
+        Owner owner = new Owner("E", "F", 300L, 20L);
+       // owner.setPersonId(3L);
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
 
-        try{
+        try {
             transaction = session.beginTransaction();
 
-                session.save(person);
-                session.save(employee);
-                session.save(owner);
+                 session.save(person);
+                 session.save(employee);
+                 session.save(owner);
 
             transaction.commit();
-
         } catch (HibernateException e) {
-
             transaction.rollback();
-            System.out.println("Error: " + e);
-
+            System.err.println("Hata: " + e);
         } finally {
             session.close();
         }
 
     }
-
 }
