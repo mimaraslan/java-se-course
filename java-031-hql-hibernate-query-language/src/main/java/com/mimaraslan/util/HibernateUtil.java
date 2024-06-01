@@ -1,8 +1,7 @@
 package com.mimaraslan.util;
 
-
-import com.mimaraslan.entity.Address;
 import com.mimaraslan.entity.Customer;
+import com.mimaraslan.entity.CustomerDetail;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -42,8 +41,8 @@ public class HibernateUtil {
 
                 configuration.setProperties(settings);
 
-               configuration.addAnnotatedClass(Customer.class);
-               configuration.addAnnotatedClass(Address.class);
+                configuration.addAnnotatedClass(Customer.class);
+                configuration.addAnnotatedClass(CustomerDetail.class);
 
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mimaraslan</groupId>
-    <artifactId>java-026-one-to-one</artifactId>
+    <artifactId>java-031-hql-hibernate-query-language</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

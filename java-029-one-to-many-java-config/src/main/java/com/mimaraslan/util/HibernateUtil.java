@@ -29,7 +29,7 @@ public class HibernateUtil {
 
  /*               // PostgreSQL
                 settings.put(Environment.DRIVER, "org.postgresql.Driver");
-                settings.put(Environment.URL, "jdbc:postgresql://localhost:5432/companydb");
+                settings.put(Environment.URL, "jdbc:postgresql://localhost:5432/postgres?currentSchema=companydb");
                 settings.put(Environment.USER, "postgres");
                 settings.put(Environment.PASS, "123456789");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQL95Dialect");
