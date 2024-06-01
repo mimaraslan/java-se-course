@@ -6,8 +6,11 @@ import com.mimaraslan.util.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 public class AppMain {
 
@@ -44,8 +47,6 @@ public class AppMain {
 
 
 
-
-
         Customer customer3 =  new Customer("Atila", "Güneş");
         CustomerDetail customerDetail3 = new CustomerDetail( );
         customerDetail3.setAddress("İzmir");
@@ -72,15 +73,50 @@ public class AppMain {
 
 
             System.out.println("================ SELECT ====================");
+            Query query = session.createQuery("FROM Customer");
 
+            List<Customer> customers = query.list();
+
+            for (Customer customer : customers) {
+                System.out.println(customer.getCustomerId() + " - " + customer.getFirstName() + " " + customer.getLastName());
+            }
 
 
 
             System.out.println("================ WHERE ====================");
 
+
+            // Eski sürümlerde
+         //   Query query2 = session.createQuery("FROM Customer WHERE customerId = :customerId");
+         //   query2.setLong("customerId", 1);
+
+
+           /*
+            Random rand = new Random();
+            int randId = rand.nextInt(1000);
+            System.out.println("Random ID: " + randId);
+            */
+
+            // Yeni kod hali
+            Query query2 = session.createQuery("FROM Customer WHERE customerId = :customerId")
+                    .setParameter("customerId", 1);
+
+            Customer cust2 = (Customer) query2.uniqueResult();
+            System.out.println(cust2.getCustomerId() + " - " + cust2.getFirstName() + " " + cust2.getLastName());
+
+
+
             System.out.println("================ DELETE ====================");
+            Query query3 = session.createQuery("DELETE FROM CustomerDetail WHERE customerId = :customerId")
+                    .setParameter("customerId", 1);
+
+            int queryResult3 = query3.executeUpdate();
+            System.out.println("CustomerDetail tablosunda: " + queryResult3);
+
+
 
             System.out.println("========== AVG SUM MIN MAX COUNT ===========");
+
 
             System.out.println("================= JOIN ====================");
 
