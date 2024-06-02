@@ -9,6 +9,9 @@ import com.mimaraslan.model.Buyer;
 import com.mimaraslan.model.Property;
 import com.mimaraslan.model.Seller;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 public class AppMain {
     public static void main(String[] args) {
 
@@ -68,17 +71,21 @@ public class AppMain {
         property1.setPropertyName("Abc");
         property1.setTitle("Hotel");
         property1.setDescription("Turistlik belde");
+        property1.setPrice(BigDecimal.valueOf(10_000_000));
 
-        // ilişki
+        // ilişkiler
         property1.setAgent(agent1);
         property1.setSeller(seller1);
         property1.getBuyers().add(buyer1);
         property1.getBuyers().add(buyer2);
-        property1.setType("Satıldı");
+        property1.setType("Satılık");
 
         // SAVE INSERT CREATE
         propertyDAO.saveOrUpdateProperty(property1);
 
+
+        property1.setType("Satıldı");
+        propertyDAO.saveOrUpdateProperty(property1);
 
 
 
@@ -89,6 +96,54 @@ public class AppMain {
         propertyDAO.saveOrUpdateProperty(property2);
 
 
+        System.out.println("------------ agentList ---------------------------------");
+        List<Agent> agentList  = agentDAO.getAgentFindAll();
+
+        for (Agent agent : agentList) {
+            System.out.println(agent.getFirstName() + " " + agent.getLastName());
+        }
+
+        System.out.println("------------ sellerList ---------------------------------");
+        List<Seller> sellerList  = sellerDAO.getSellerFindAll();
+
+        for (Seller seller : sellerList) {
+            System.out.println(seller.getFirstName() + " " + seller.getLastName());
+        }
+
+        System.out.println("------------ buyerList ---------------------------------");
+        List<Buyer> buyerList  = buyerDAO.getBuyerFindAll();
+
+        for (Buyer buyer : buyerList) {
+            System.out.println(buyer.getFirstName() + " " + buyer.getLastName());
+        }
+
+        System.out.println("------------ propertyList ---------------------------------");
+        List<Property> propertyList  = propertyDAO.getPropertyFindAll();
+
+        for (Property property : propertyList) {
+            System.out.println(property.getId() + " " + property.getTitle() + " " + property.getDescription()
+            + " " + property.getPrice()+ " " +
+
+                    property.getAgent() + " " + property.getSeller());
+        }
+
+
+
+        System.out.println("DELETE----------- agentList ---------------------------------");
+
+        agentDAO.deleteAgentFindById(2L);
+
+        agentList  = agentDAO.getAgentFindAll();
+
+        for (Agent agent : agentList) {
+            System.out.println(agent.getFirstName() + " " + agent.getLastName());
+        }
+
+        System.out.println("FIND BY ID------------ buyer 1 ---------------------------------");
+
+        Buyer buyerResult1  = buyerDAO.getBuyerFindById(1L);
+
+        System.out.println(buyerResult1.getFirstName() + " " + buyerResult1.getLastName());
 
 
     }

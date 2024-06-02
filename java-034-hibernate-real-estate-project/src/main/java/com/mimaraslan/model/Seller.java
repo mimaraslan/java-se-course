@@ -1,10 +1,8 @@
 package com.mimaraslan.model;
 
 import javax.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -43,4 +41,18 @@ public class Seller {
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private Set<Property> properties = new HashSet<>();
+
+/* // TODO - YAZDIRMADA SORUN YAŞANIYOR
+    @Override
+    public String toString() {
+        return "Seller{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", properties=" + properties +
+                '}';
+    }
+    */
 }

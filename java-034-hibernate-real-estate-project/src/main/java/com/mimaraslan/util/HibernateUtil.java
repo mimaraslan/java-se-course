@@ -37,7 +37,7 @@ public class HibernateUtil {
 
 
                 settings.put(Environment.SHOW_SQL, "true");
-                settings.put(Environment.FORMAT_SQL, "true");
+                settings.put(Environment.FORMAT_SQL, "false");
 
                 settings.put(Environment.HBM2DDL_AUTO, "create");
 

@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,6 +34,21 @@ public class Property {
 
     @Column (name = "TYPE")
     private String type;
+
+
+   private BigDecimal price;
+
+
+    /*
+
+    bedroom
+    bathroom
+    area
+    location
+     */
+
+
+
 
     //   m        -     1
     //  Property  -   Agent

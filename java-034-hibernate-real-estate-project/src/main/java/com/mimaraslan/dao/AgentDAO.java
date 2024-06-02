@@ -92,7 +92,6 @@ public class AgentDAO {
     }
 
 
-
     public Agent getAgentFindById (Long id){
 
        // id - sorgu - iş oluş - service
@@ -132,10 +131,6 @@ public class AgentDAO {
     }
 
 
-
-
-
-
     public boolean deleteAgentFindById (Long id){
 
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -156,7 +151,6 @@ public class AgentDAO {
                System.out.println("Agent not found");
                return false;
            }
-
 
         } catch (HibernateException e) {
 

@@ -10,13 +10,13 @@ import java.util.List;
 
 public class BuyerDAO {
 
-    public void saveOrUpdateBuyer (Buyer buyer){
+    public void saveOrUpdateBuyer(Buyer buyer) {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         Transaction transaction = null;
 
-        try{
+        try {
             transaction = session.beginTransaction();
 
             session.saveOrUpdate(buyer);
@@ -25,7 +25,7 @@ public class BuyerDAO {
 
         } catch (HibernateException e) {
 
-            if(transaction != null){
+            if (transaction != null) {
                 transaction.rollback();
             }
 
@@ -37,13 +37,13 @@ public class BuyerDAO {
 
     }
 
-    public Buyer getBuyerFindById (Long id){
+    public Buyer getBuyerFindById(Long id) {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
 
-        try{
+        try {
 
-            return  session.get(Buyer.class, id);
+            return session.get(Buyer.class, id);
 
         } catch (HibernateException e) {
             System.out.println("Error: " + e);
@@ -54,13 +54,13 @@ public class BuyerDAO {
 
     }
 
-    public List<Buyer> getBuyerFindAll (){
+    public List<Buyer> getBuyerFindAll() {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
 
-        try{
+        try {
 
-            return  session.createQuery("FROM Buyer").list();
+            return session.createQuery("FROM Buyer").list();
 
         } catch (HibernateException e) {
             System.out.println("Error: " + e);

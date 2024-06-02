@@ -19,7 +19,11 @@ CREATE SCHEMA real_estate_db AUTHORIZATION postgres;
 - title
 - description
 - type
-
+- price
+- bedroom
+- bathroom
+- area
+- location
 
 ---  Bir gayrimenkulu birden fazla kişi alabilir.
 ### Buyer - Alıcı
@@ -29,12 +33,14 @@ CREATE SCHEMA real_estate_db AUTHORIZATION postgres;
 - email
 - phone
 
+
 ### Seller - Satıcı
 - id
 - firstName
 - lastName
 - email
 - phone
+
 
 ### Agent - Emlakçı
 - id
