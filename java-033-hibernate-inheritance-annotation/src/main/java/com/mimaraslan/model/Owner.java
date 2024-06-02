@@ -1,15 +1,34 @@
 package com.mimaraslan.model;
 
-public class Owner extends Person {
+import javax.persistence.*;
 
+@Entity
+@Table(name="OWNER")
+@AttributeOverrides({
+        @AttributeOverride(name="firstname", column=@Column(name="FIRSTNAME")),
+        @AttributeOverride(name="lastname", column=@Column(name="LASTNAME"))
+})
+public class Owner extends Person {
+/*
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "OWNER_ID")
     private Long ownerId;
+*/
+
+    @Column(name="stocks")
     private Long stocks;
+
+    @Column(name="partnership_stake")
     private Long partnershipStake;
+
+
 
     // Constructors and Getter/Setter methods,
 
 
     public Owner() {
+        super();
     }
 
     public Owner(String firstname, String lastname, Long stocks, Long partnershipStake) {
@@ -34,7 +53,7 @@ public class Owner extends Person {
     public void setPartnershipStake(Long partnershipStake) {
         this.partnershipStake = partnershipStake;
     }
-
+/*
     public Long getOwnerId() {
         return ownerId;
     }
@@ -42,4 +61,5 @@ public class Owner extends Person {
     public void setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
     }
+    */
 }

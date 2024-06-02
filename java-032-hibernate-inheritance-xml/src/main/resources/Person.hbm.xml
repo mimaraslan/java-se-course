@@ -14,7 +14,7 @@
     </class>
 
     <class name="Employee">
-        <id type="java.lang.Long" name="personId" column="PERSON_ID">
+        <id type="java.lang.Long" name="employeeId" column="EMPLOYEE_ID">
             <generator class="identity" />
         </id>
         <property type="java.lang.String" name="firstname" />
@@ -24,7 +24,7 @@
     </class>
 
     <class name="Owner">
-        <id name="personId" column="PERSON_ID">
+        <id name="ownerId" column="OWNER_ID">
             <generator class="identity" />
         </id>
         <property type="java.lang.String" name="firstname" />
