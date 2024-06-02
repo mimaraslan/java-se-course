@@ -22,7 +22,7 @@ public class HibernateUtil {
                 Properties settings = new Properties();
 
                 // MYSQL 8
- /*               settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
+ /*             settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
                 settings.put(Environment.URL, "jdbc:mysql://localhost:3306/real_estate_db?useSSL=false");
                 settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, "123456789");
