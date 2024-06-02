@@ -27,12 +27,8 @@
 
 
         <mapping class="com.mimaraslan.model.Person"/>
-
         <mapping class="com.mimaraslan.model.Owner"/>
-        <!--
-          <mapping class="com.mimaraslan.model.Employee"/>
-          -->
-
+        <mapping class="com.mimaraslan.model.Employee"/>
 
         <!--
         <mapping resource="Person.hbm.xml"/>

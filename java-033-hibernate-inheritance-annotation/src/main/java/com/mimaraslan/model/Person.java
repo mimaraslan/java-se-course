@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @GeneratedValue(strategy = GenerationType.IDENTITY) // FIXME otomatik ID verilecek
     @Column(name = "PERSON_ID")
     private Long personId;
 
