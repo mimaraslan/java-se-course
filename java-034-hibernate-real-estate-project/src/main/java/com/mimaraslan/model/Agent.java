@@ -1,11 +1,14 @@
 package com.mimaraslan.model;
 
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Setter
@@ -36,5 +39,12 @@ public class Agent {
     @Column (name = "OFFICE_ADDRESS")
     private String officeAddress;
 
+    //   1      -      m
+    // Agent    -   Property
+    // One       To   Many
+    @OneToMany(mappedBy = "agent",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private Set<Property> properties = new HashSet<>();
 
 }

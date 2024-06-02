@@ -1,10 +1,13 @@
 package com.mimaraslan.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -30,5 +33,32 @@ public class Property {
 
     @Column (name = "TYPE")
     private String type;
+
+    //   m        -     1
+    //  Property  -   Agent
+    //  Many      To   One
+    @ManyToOne
+    @JoinColumn(name = "agent_id")
+    private Agent agent;
+
+
+    //   m        -     1
+    //  Property  -   Seller
+    //  Many      To   One
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    private Seller seller;
+
+
+    //   m     -      m
+    // Property      Buyer
+    @ManyToMany
+    @JoinTable(name = "Property_Buyer",
+       joinColumns = @JoinColumn (name = "property_id"),
+            inverseJoinColumns = @JoinColumn (name = "buyer_id")
+    )
+    private Set<Buyer> buyers = new HashSet<Buyer>();
+
+
 
 }

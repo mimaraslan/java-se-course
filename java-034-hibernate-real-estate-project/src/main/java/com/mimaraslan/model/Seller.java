@@ -1,10 +1,13 @@
 package com.mimaraslan.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -30,4 +33,14 @@ public class Seller {
 
     @Column (name = "PHONE")
     private String phone;
+
+
+
+    //   1      -      m
+    // Seller    -   Property
+    // One       To   Many
+    @OneToMany(mappedBy = "seller",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private Set<Property> properties = new HashSet<>();
 }

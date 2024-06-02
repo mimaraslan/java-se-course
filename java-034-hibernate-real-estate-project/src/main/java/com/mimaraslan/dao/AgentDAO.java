@@ -138,7 +138,7 @@ public class AgentDAO {
 
     public boolean deleteAgentFindById (Long id){
 
-            Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
 
         Transaction transaction = null;
 

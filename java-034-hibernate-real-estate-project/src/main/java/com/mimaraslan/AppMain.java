@@ -1,40 +1,94 @@
 package com.mimaraslan;
 
-
-import com.mimaraslan.util.HibernateUtil;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
+import com.mimaraslan.dao.AgentDAO;
+import com.mimaraslan.dao.BuyerDAO;
+import com.mimaraslan.dao.PropertyDAO;
+import com.mimaraslan.dao.SellerDAO;
+import com.mimaraslan.model.Agent;
+import com.mimaraslan.model.Buyer;
+import com.mimaraslan.model.Property;
+import com.mimaraslan.model.Seller;
 
 public class AppMain {
     public static void main(String[] args) {
 
+        AgentDAO agentDAO = new AgentDAO();
+        BuyerDAO buyerDAO = new BuyerDAO();
+        SellerDAO sellerDAO = new SellerDAO();
+        PropertyDAO propertyDAO = new PropertyDAO();
+
+        Agent agent1 = new Agent();
+        agent1.setFirstName("Samet");
+        agent1.setLastName("Furkan");
+        agent1.setEmail("samet145312345@gmail.com");
+        agent1.setPhone("123456789");
+        agent1.setOfficeAddress("Ankara");
+        agentDAO.saveOrUpdateAgent(agent1);
+
+        Agent agent2 = new Agent();
+        agent2.setFirstName("Veysel");
+        agent2.setLastName("Ekinci");
+        agent2.setEmail("v12345@gmail.com");
+        agent2.setPhone("77655575776");
+        agent2.setOfficeAddress("İzmir");
+        agentDAO.saveOrUpdateAgent(agent2);
 
 
-        // CRUD - Create   Read    Update  Delete
-        // SQL  - Insert   Select  Update  Delete
+        Buyer buyer1 = new Buyer();
+        buyer1.setFirstName("Selahattin");
+        buyer1.setLastName("Dişli");
+        buyer1.setEmail("sela9876@gmail.com");
+        buyer1.setPhone("33333789");
+        buyerDAO.saveOrUpdateBuyer(buyer1);
+
+        Buyer buyer2 = new Buyer();
+        buyer2.setFirstName("Zeynep");
+        buyer2.setLastName("Coşkun");
+        buyer2.setEmail("z1234@gmail.com");
+        buyer2.setPhone("44444444");
+        buyerDAO.saveOrUpdateBuyer(buyer2);
+
+
+        Seller seller1 = new Seller();
+        seller1.setFirstName("Muhammed");
+        seller1.setLastName("Mammadov");
+        seller1.setEmail("m1232525@gmail.com");
+        seller1.setPhone("54645646");
+        sellerDAO.saveOrUpdateSeller(seller1);
+
+        Seller seller2 = new Seller();
+        seller2.setFirstName("Sadık");
+        seller2.setLastName("Kuzu");
+        seller2.setEmail("sadik9999@gmail.com");
+        seller2.setPhone("9987765");
+        sellerDAO.saveOrUpdateSeller(seller2);
+
+
+        Property property1 = new Property();
+        property1.setPropertyName("Abc");
+        property1.setTitle("Hotel");
+        property1.setDescription("Turistlik belde");
+
+        // ilişki
+        property1.setAgent(agent1);
+        property1.setSeller(seller1);
+        property1.getBuyers().add(buyer1);
+        property1.getBuyers().add(buyer2);
+        property1.setType("Satıldı");
+
+        // SAVE INSERT CREATE
+        propertyDAO.saveOrUpdateProperty(property1);
 
 
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
 
-        Transaction transaction = null;
+        Property property2 = new Property();
+        property2.setPropertyName("Malikane");
+        property2.setTitle("Dublex");
+        property2.setDescription("Nezih bir konak");
+        propertyDAO.saveOrUpdateProperty(property2);
 
-        try{
-            transaction = session.beginTransaction();
-/*
-            session.save();
-            session.save();
-            session.save();
-*/
-            transaction.commit();
 
-        } catch (HibernateException e) {
-
-        } finally {
-            session.close();
-        }
 
 
     }
