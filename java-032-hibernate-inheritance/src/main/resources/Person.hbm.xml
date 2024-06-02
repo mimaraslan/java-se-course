@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.mimaraslan.model">
+
+    <class name="Person" table="PERSON">
+        <id type="java.lang.Long" name="personId" column="PERSON_ID">
+            <generator class="identity" />
+        </id>
+        <property type="java.lang.String" name="firstname" length="50" />
+        <property type="java.lang.String" name="lastname" column="lastname" length="60" />
+    </class>
+
+    <class name="Employee">
+        <id type="java.lang.Long" name="personId" column="PERSON_ID">
+            <generator class="identity" />
+        </id>
+        <property type="java.lang.String" name="firstname" />
+        <property type="java.lang.String" name="lastname" column="lastname" />
+        <property type="java.lang.String" name="departmentName" column="department_name" />
+        <property type="date" name="joiningDate" column="joining_date" />
+    </class>
+
+    <class name="Owner">
+        <id name="personId" column="PERSON_ID">
+            <generator class="identity" />
+        </id>
+        <property type="java.lang.String" name="firstname" />
+        <property type="java.lang.String" name="lastname" column="lastname" />
+        <property type="java.lang.Long" name="stocks" column="stocks" />
+        <property type="java.lang.Long" name="partnershipStake" column="partnership_stake" />
+    </class>
+</hibernate-mapping>
