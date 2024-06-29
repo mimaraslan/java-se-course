@@ -1,6 +1,5 @@
 package com.mimaraslan.controller;
 
-import lombok.Getter;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,10 +20,8 @@ public class StudentController {
         return "Hello Spring Boot - Student Controller ";
     }
 
-
     // POST
     // PUT
     // DELETE
-
 
 }
