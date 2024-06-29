@@ -12,12 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1")
 public class StudentController {
 
-    //   http://localhost:8090/api/v1/hello
 
+    // GET
+
+    //   http://localhost:8090/api/v1/hello
     @GetMapping("/hello")
     public String hello() {
         return "Hello Spring Boot - Student Controller ";
     }
+
+
+    // POST
+    // PUT
+    // DELETE
 
 
 }
