@@ -23,6 +23,7 @@ public class Student {
 
     private String lastName;
 
+    // FIXME tekil olacak.
     private String email;
 
 

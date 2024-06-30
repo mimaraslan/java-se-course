@@ -2,11 +2,10 @@ package com.mimaraslan.controller;
 
 import com.mimaraslan.model.Student;
 import com.mimaraslan.service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+import java.util.Optional;
 
 //   http://localhost:8090/api/v1
 
@@ -20,7 +19,7 @@ public class StudentController {
 
 
     // Servis enjekte ediliyor. Eski
- /*
+/*
     @Autowired
     StudentService studentService;
 */
@@ -49,37 +48,61 @@ public class StudentController {
     //   http://localhost:8090/api/v1/student/all           // v2
     @GetMapping({"students", "/student/all"})
      public List<Student> getStudents() {
-        return null;
+        return studentService.getStudents();
       }
-
 
     // GET  - SELECT WHERE
     //   http://localhost:8090/api/v1/student/1
     @GetMapping("/student/{id}")
     public Student getStudent(@PathVariable (name = "id") Long id) {
-        return null;
-    }
 
+        // id değeri veritabaninda var mı yok mu?
+
+        return  studentService.getStudent(id);
+    }
 
     // POST  - INSERT
     //   http://localhost:8090/api/v1/student
     @PostMapping("/student")
     public Student addStudent(@RequestBody Student student) {
-        return null;
+        return studentService.addStudent(student);
     }
 
     // PUT - UPDATE
     //   http://localhost:8090/api/v1/student/1
     @PutMapping("/student/{id}")
-    public Student updateStudent(@PathVariable Long id) {
-        return null;
+    public Optional<Student> updateStudent(@PathVariable Long id,
+                                           @RequestBody Student student) {
+
+        // FIXME service katmanına bu bölüm taşınacak.
+        // id değeri veritabaninda var mı yok mu?
+
+
+        Student studentInfo = studentService.getStudent(id);
+
+        if (studentInfo == null)  {
+                 return Optional.empty();
+            } else {
+
+            student.setId(id);
+  /*          studentInfo.setId(id);
+            studentInfo.setFirstName(student.getFirstName());
+            studentInfo.setLastName(student.getLastName());
+            studentInfo.setEmail(student.getEmail());
+*/
+            return studentService.updateStudent(student);
+        }
+
     }
 
     // DELETE - DELETE
     //   http://localhost:8090/api/v1/student/1
     @DeleteMapping ("/student/{id}")
-    public Student deleteStudent(@PathVariable Long id) {
-        return null;
+    public String deleteStudent(@PathVariable Long id) {
+
+        // id değeri veritabaninda var mı yok mu?
+
+        return studentService.deleteStudent(id);
     }
 
 }
