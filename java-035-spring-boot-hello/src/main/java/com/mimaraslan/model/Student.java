@@ -1,7 +1,10 @@
 package com.mimaraslan.model;
 
-import jakarta.persistence.*;
+// import javax.persistence.*;    // 2.x.y
+import jakarta.persistence.*;  // 3.x.y
 import lombok.*;
+
+
 
 @Data // =  @Setter + @Getter
 @NoArgsConstructor

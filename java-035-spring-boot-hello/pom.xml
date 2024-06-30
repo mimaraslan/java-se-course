@@ -7,7 +7,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.3.1</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
     <groupId>com.mimaraslan</groupId>
@@ -15,6 +15,8 @@
     <version>1.0.0</version>
     <name>java-035-spring-boot-hello</name>
     <description>java-035-spring-boot-hello</description>
+
+
     <url/>
     <licenses>
         <license/>
