@@ -2,9 +2,11 @@ package com.mimaraslan.service;
 
 import com.mimaraslan.model.Student;
 import com.mimaraslan.repository.StudentRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Propagation;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,6 +34,9 @@ public class StudentService {
     }
 
     public Optional<Student> updateStudent(Student student) {
+
+        // FIXME güncelleme bu kısma taşınacak.
+
         return Optional.of(studentRepository.save(student));
     }
 

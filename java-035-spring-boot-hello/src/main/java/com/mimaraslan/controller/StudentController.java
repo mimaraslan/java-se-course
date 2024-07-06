@@ -85,7 +85,9 @@ public class StudentController {
             } else {
 
             student.setId(id);
-  /*          studentInfo.setId(id);
+  /*
+  // bunu masraflı ve istenilmeyen durum
+            studentInfo.setId(id);
             studentInfo.setFirstName(student.getFirstName());
             studentInfo.setLastName(student.getLastName());
             studentInfo.setEmail(student.getEmail());
