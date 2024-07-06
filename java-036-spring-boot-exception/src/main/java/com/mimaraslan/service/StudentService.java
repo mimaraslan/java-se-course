@@ -37,8 +37,12 @@ public class StudentService {
     }
 
     public Student getOneStudent(Long id) {
-        //return studentRepository.findById(id).get();
-        return studentRepository.getReferenceById(id);
+
+
+
+        return studentRepository.findById(id).get();
+       // FIXME - hata mesajını incele
+        //return studentRepository.getReferenceById(id);
     }
 
     public Student createStudent(Student student) {

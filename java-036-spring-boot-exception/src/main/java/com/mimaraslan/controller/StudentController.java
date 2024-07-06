@@ -39,14 +39,14 @@ public class StudentController {
     */
 
     // GET - SELECT ALL
-    // http://localhost/api/v1/student
+    // http://localhost:8090/api/v1/student
     @GetMapping("/student")
     public List<Student> getAllStudent() {
         return studentService.getAllStudent();
     }
 
     // GET - SELECT WHERE
-    // http://localhost/api/v1/student/1
+    // http://localhost:8090/api/v1/student/1
     @GetMapping("/student/{id}")
     public Student getOneStudent(@PathVariable Long id) {
         return studentService.getOneStudent(id);
@@ -54,7 +54,7 @@ public class StudentController {
 
 
     // POST - INSERT
-    // http://localhost/api/v1/student
+    // http://localhost:8090/api/v1/student
     @PostMapping ("/student")
     public Student createStudent(@RequestBody Student student) {
         return studentService.createStudent(student);
@@ -62,7 +62,7 @@ public class StudentController {
 
 
     // DELETE - DELETE
-    // http://localhost/api/v1/student/1
+    // http://localhost:8090/api/v1/student/1
     @DeleteMapping ("/student/{id}")
     public Map<String, Boolean> deleteStudent(@PathVariable Long id) {
         return studentService.deleteStudent(id);
@@ -70,7 +70,7 @@ public class StudentController {
 
 
     // PUT - UPDATE
-    // http://localhost/api/v1/student/1
+    // http://localhost:8090/api/v1/student/1
     @PutMapping("/student/{id}")
     public Student updateStudent(@PathVariable Long id,
                                  @RequestBody Student student) {
