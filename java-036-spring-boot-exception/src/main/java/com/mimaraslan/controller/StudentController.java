@@ -48,7 +48,7 @@ public class StudentController {
 
     // GET - SELECT WHERE
     // http://localhost:8090/api/v1/student/v1/1
-    @GetMapping("/student/v1/{id}")
+    @ GetMapping("/student/v1/{id}")
     public Student getOneStudentV1(@PathVariable Long id) {
         return studentService.getOneStudentV1(id);
     }
