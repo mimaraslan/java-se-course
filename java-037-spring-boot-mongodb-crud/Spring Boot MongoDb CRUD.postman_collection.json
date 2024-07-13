@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "2fe0b9d1-74c4-4540-8122-7ce98c020a09",
+		"name": "Spring Boot MongoDb CRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "77926",
+		"_collection_link": "https://interstellar-capsule-247109.postman.co/workspace/Java-2024~f73524f9-dba0-4763-8e27-e4f79695829d/collection/77926-2fe0b9d1-74c4-4540-8122-7ce98c020a09?action=share&source=collection_link&creator=77926"
+	},
+	"item": [
+		{
+			"name": "Tutorial",
+			"item": [
+				{
+					"name": "retrieve all Tutorials",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/tutorials",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"tutorials"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve a Tutorial by :id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/tutorials/66925528a059ce65c6091ce3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"tutorials",
+								"66925528a059ce65c6091ce3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new Tutorial 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"title\": \"Manager\",\r\n        \"description\": \"Eyüp Kaan\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/tutorials",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"tutorials"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new Tutorial 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"title\": \"Developer\",\r\n        \"description\": \"Dilşat Şentürk\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/tutorials",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"tutorials"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update a Tutorial by :id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Software\",\r\n    \"description\": \"Azad Kaya\",\r\n    \"published\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/tutorials/66926feb22e0b1751f616964",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"tutorials",
+								"66926feb22e0b1751f616964"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a Tutorial by :id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/tutorials/66925528a059ce65c6091ce3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"tutorials",
+								"66925528a059ce65c6091ce3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete all Tutorials",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/tutorials",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"tutorials"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all published Tutorials",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/tutorials/published",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"tutorials",
+								"published"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
