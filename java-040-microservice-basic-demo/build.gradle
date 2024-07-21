@@ -7,7 +7,7 @@ plugins {
      * Diğerlerinde hiç yazmasak bile geçerli olacak bunlar.
      */
     id 'java'
-    id 'org.springframework.boot' version '3.3.2'
+    id 'org.springframework.boot' version '3.2.2'
     id 'io.spring.dependency-management' version '1.1.6'
     id 'application'
     id 'java-library'
@@ -77,7 +77,7 @@ allprojects {
         implementation libs.mapStruct
         annotationProcessor libs.mapStructProcessor
         implementation libs.swaggerApi
-        implementation libs.postgreSql
+      //  implementation libs.postgreSql
     }
 }
 

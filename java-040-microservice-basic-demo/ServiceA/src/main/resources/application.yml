@@ -1,0 +1,11 @@
+###### Spring configs ########
+spring:
+   application:
+     name: service-a
+#   profiles:
+#    active: dev
+
+###### Server port ########
+server:
+  port: 9091
+
