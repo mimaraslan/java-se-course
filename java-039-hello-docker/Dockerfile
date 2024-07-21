@@ -1,5 +1,6 @@
 # Uygulama için JDK lazım gerekli.
-FROM amazoncorretto:17
+# FROM amazoncorretto:17
+FROM openjdk:21
 
 # Bizim projemizdeki JAR dosyamızın Docker içinde çalışacağı konum.
 ARG JAR_FILE=target/*.jar
