@@ -1,0 +1,11 @@
+###### Spring configs ########
+spring:
+   application:
+     name: auth-service
+#   profiles:
+#    active: dev
+
+###### Server port ########
+server:
+  port: 9090
+
