@@ -74,9 +74,10 @@ allprojects {
         implementation libs.springBootWeb
         compileOnly libs.lombok
         annotationProcessor libs.lombok
+        implementation libs.swaggerApi
+
         implementation libs.mapStruct
         annotationProcessor libs.mapStructProcessor
-        implementation libs.swaggerApi
       //  implementation libs.postgreSql
     }
 }

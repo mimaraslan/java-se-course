@@ -1,4 +1,3 @@
 dependencies {
-    implementation libs.postgreSql
-    implementation libs.springBootDataJpa
+
 }
