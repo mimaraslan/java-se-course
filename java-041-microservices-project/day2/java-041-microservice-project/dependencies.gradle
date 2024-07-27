@@ -7,8 +7,10 @@ ext {
             lombok              : "1.18.34",
             mapStruct           : "1.5.5.Final",
             postgreSql          : "42.7.3",
-            swaggerApi          : "2.3.0"
+            swaggerApi          : "2.3.0",
+            jwt                 : "4.4.0"
     ]
+
 
     /**
      * Bu kısımda bağımlılık listesini oluştracağız. K:V
@@ -27,6 +29,9 @@ ext {
             lombok                          : "org.projectlombok:lombok:$versions.lombok",
             mapStruct                       : "org.mapstruct:mapstruct:$versions.mapStruct",
             mapStructProcessor              : "org.mapstruct:mapstruct-processor:$versions.mapStruct",
-            swaggerApi                      : "org.springdoc:springdoc-openapi-starter-webmvc-ui:$versions.swaggerApi"
+            swaggerApi                      : "org.springdoc:springdoc-openapi-starter-webmvc-ui:$versions.swaggerApi",
+            jwt                             : "com.auth0:java-jwt:$versions.jwt"
     ]
 }
+
+

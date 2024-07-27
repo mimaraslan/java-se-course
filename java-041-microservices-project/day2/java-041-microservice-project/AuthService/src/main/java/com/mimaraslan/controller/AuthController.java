@@ -64,10 +64,18 @@ public class AuthController {
     public  ResponseEntity<String>   login (@RequestBody DoLoginRequestDto dto) {
         return ResponseEntity.ok(authService.doLogin(dto)); }
 
-
+    // Tokensiz
+/*
     @GetMapping(ENDPOINT_FINDALL)
-    public List<Auth> findAll () {
-        return null; }
+    public  ResponseEntity < List<Auth> > findAll () {
+        return ResponseEntity.ok(authService.findAll()); }
+    */
+
+    //Tokenli
+    @GetMapping(ENDPOINT_FINDALL)
+    public  ResponseEntity < List<Auth> > findAll (@RequestParam String token) {
+        return ResponseEntity.ok(authService.findAll(token)); }
+
 
     @GetMapping(ENDPOINT_GETMESSAGE)
     public  String   getMessage () {

@@ -22,7 +22,14 @@ spring:
 #    active: dev
 
 
-
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
+
+### JWT configs
+authservice:
+  secret:
+   key: Ankara06
+  issuer: abc
+  expire:
+   date: 300000    # 1000L * 60 * 5

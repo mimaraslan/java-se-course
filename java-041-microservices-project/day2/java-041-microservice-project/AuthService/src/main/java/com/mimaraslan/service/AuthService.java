@@ -3,13 +3,14 @@ package com.mimaraslan.service;
 import com.mimaraslan.dto.request.DoLoginRequestDto;
 import com.mimaraslan.dto.request.DoRegisterRequestDto;
 import com.mimaraslan.dto.response.DoRegisterResponseDto;
+import com.mimaraslan.execption.AuthServiceException;
+import com.mimaraslan.execption.ErrorType;
 import com.mimaraslan.model.Auth;
 import com.mimaraslan.repository.IAuthRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.mimaraslan.utils.JwtTokenManager;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 //@RequiredArgsConstructor //(onConstructor_ = {@Autowired})
@@ -30,10 +31,15 @@ public class AuthService extends ServiceManager<Auth, Long> {
 
     private final IAuthRepository repository;
 
-    public AuthService(IAuthRepository repository) {
+    private final JwtTokenManager jwtTokenManager;
+
+
+    public AuthService(IAuthRepository repository, JwtTokenManager jwtTokenManager) {
         super(repository);
         this.repository = repository;
+        this.jwtTokenManager = jwtTokenManager;
     }
+
 
 
 
@@ -76,10 +82,6 @@ public class AuthService extends ServiceManager<Auth, Long> {
     }
 
 
-
-
-
-
     public DoRegisterResponseDto doRegister(DoRegisterRequestDto dto) {
 
         // TODO Parolayı belirli büyük küçük harf ve sayı olmaya zormaka için REGEX kalıpları kullanılır.
@@ -100,20 +102,48 @@ public class AuthService extends ServiceManager<Auth, Long> {
         }
         */
 
+      /*
         Auth auth = new Auth();
         auth.setUsername(dto.getUsername());
         auth.setEmail(dto.getEmail());
-
         // TODO   Password  RePassword karşılaştırılması gerekli kadetmeden önce
-
         auth.setPassword(dto.getPassword());
         auth.setState(true);
-
         auth.setCreateAt(System.currentTimeMillis());
 
         save(auth);
+        */
 
-        DoRegisterResponseDto responseDto = new DoRegisterResponseDto();
+        // Builder ile nesne - lombok ile nesne
+    /*    Auth auth = Auth.builder()
+                .username(dto.getUsername())
+                .email(dto.getEmail())
+                .password(dto.getPassword())
+                .state(true)
+                .createAt(System.currentTimeMillis())
+                .build();
+
+        save(auth);
+        */
+
+
+        // Password ve RePassword
+        if (!dto.getPassword().equals(dto.getRePassword())) {
+            throw new AuthServiceException(ErrorType.REGISTER_PASSWORD_MISMATCH);
+        }
+
+
+
+        Auth auth = save(Auth.builder()
+                .username(dto.getUsername())
+                .email(dto.getEmail())
+                .password(dto.getPassword())
+                .state(true)
+                .createAt(System.currentTimeMillis())
+                .build());
+
+
+                DoRegisterResponseDto responseDto = new DoRegisterResponseDto();
         responseDto.setId(auth.getId());
         responseDto.setUsername(auth.getUsername());
         responseDto.setEmail(auth.getEmail());
@@ -125,21 +155,62 @@ public class AuthService extends ServiceManager<Auth, Long> {
 
 
 
-
-    public String doLogin(DoLoginRequestDto dto) {
+    public String doLoginV1(DoLoginRequestDto dto) {
 
     Optional<Auth> auth = repository.findByUsernameAndPassword(dto.getUsername(), dto.getPassword());
 
-    // FIXME kontrolle bu daha da iyi hale getirilebilinir
-   /*
+        if(auth.isEmpty()) {
+            throw new AuthServiceException(ErrorType.DOLOGIN_USERNAME_OR_PASSWORD_MISMATCH);
+        }
+
+
+        return auth.get().getId().toString();
+
+    }
+
+
+
+    public String doLogin(DoLoginRequestDto dto) {
+
+        Optional<Auth> auth = repository.findByUsernameAndPassword(dto.getUsername(), dto.getPassword());
+
+
+
      if(auth.isEmpty()) {
-        return auth.get().getId().toString();
+       throw new AuthServiceException(ErrorType.DOLOGIN_USERNAME_OR_PASSWORD_MISMATCH);
     }
-*/
 
-        return auth.get().getId().toString();
+
+      // return auth.get().getId().toString();
+
+        return jwtTokenManager.createToken(Long.valueOf(auth.get().getId().toString())).get();
 
     }
+
+
+
+
+    public List<Auth> findAll(String token){
+
+        Optional<Long> id = null;
+
+        try {
+            id = jwtTokenManager.getIdInfoFromToken(token);
+
+        } catch (Exception e){
+            throw new AuthServiceException(ErrorType.INVALID_TOKEN);
+        }
+
+        if (findById(id.get()).isEmpty())
+            throw new AuthServiceException(ErrorType.INVALID_TOKEN);
+
+        return repository.findAll();
+    }
+
+
+
+
+
 
 
 }
