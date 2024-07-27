@@ -1,17 +1,28 @@
 package com.mimaraslan.controller;
 
+import com.mimaraslan.dto.request.DoLoginRequestDto;
+import com.mimaraslan.dto.request.DoRegisterRequestDto;
+import com.mimaraslan.dto.response.DoRegisterResponseDto;
 import com.mimaraslan.model.Auth;
+import com.mimaraslan.service.AuthService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.mimaraslan.constant.EndPoint.*;
+
+//  http://localhost:9090/auth
+
 @RestController
-@RequestMapping
+@RequestMapping(ENDPOINT_AUTH)
 public class AuthController {
+
+    private final AuthService authService;
+
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
 
 /*
     // http://localhost:9090
@@ -28,21 +39,37 @@ public class AuthController {
     }
     */
 
-    @PostMapping("/register")
-    public ResponseEntity<Auth> register () {
-        return null; }
+
+    //  http://localhost:9090/auth/register
+/*
+    @PostMapping(ENDPOINT_REGISTER)
+    public ResponseEntity<Auth> register (@RequestBody DoRegisterRequestDto dto) {
+        System.out.println("Register request DTO: " + dto);
+        return ResponseEntity.ok(authService.doRegister(dto));
+}
+*/
 
 
-    @PostMapping("/login")
-    public  Auth   login () {
-        return null; }
+    @PostMapping(ENDPOINT_REGISTER)
+    public ResponseEntity<DoRegisterResponseDto> register (@RequestBody DoRegisterRequestDto dto) {
+        System.out.println("Register request DTO: " + dto);
+        return ResponseEntity.ok(authService.doRegister(dto));
+    }
 
 
-    @GetMapping("/findAll")
+
+    //  http://localhost:9090/auth/login
+
+    @PostMapping(ENDPOINT_LOGIN)
+    public  ResponseEntity<String>   login (@RequestBody DoLoginRequestDto dto) {
+        return ResponseEntity.ok(authService.doLogin(dto)); }
+
+
+    @GetMapping(ENDPOINT_FINDALL)
     public List<Auth> findAll () {
         return null; }
 
-    @GetMapping("/getMessage")
+    @GetMapping(ENDPOINT_GETMESSAGE)
     public  String   getMessage () {
         return null; }
 

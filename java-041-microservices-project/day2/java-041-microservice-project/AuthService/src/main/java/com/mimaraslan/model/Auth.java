@@ -1,10 +1,12 @@
 package com.mimaraslan.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 //@EqualsAndHashCode(callSuper = true)
+
 
 @SuperBuilder // bir siniftan nesne türetmek için kullanilir
 @Data // set ve get metodlarini otomatik tanimlar
@@ -21,6 +23,7 @@ public class Auth extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+ //   @Size(min = 1, max = 50)
     @Column(unique = true, nullable = false)
     private String username;
 
@@ -29,6 +32,8 @@ public class Auth extends BaseEntity{
     private String email;
 
     private String password;
+
+
 
 
 
