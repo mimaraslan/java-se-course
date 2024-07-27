@@ -1,0 +1,26 @@
+###### Server port ########
+server:
+  port: 9090
+
+###### Spring configs ########
+spring:
+ application:
+  name: auth-service
+ datasource:
+   url: jdbc:postgresql://localhost:5432/AuthServiceDB
+   username: postgres
+   password: 123456789
+ jpa:
+   properties:
+     hibernate:
+       dialect: org.hibernate.dialect.PostgreSQLDialect
+   show-sql: true
+
+#   profiles:
+#    active: dev
+
+
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
