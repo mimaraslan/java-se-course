@@ -1,6 +1,6 @@
 ###### Server port ########
 server:
-  port: 9090
+  port: 9090  # ${SERVICE_PORT}
 
 ###### Spring configs ########
 spring:
