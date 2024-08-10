@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 
 @MappedSuperclass // üst sınıf için kullanilmalidir
@@ -16,10 +18,15 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor // dolu paramtereli hazırlayıcı yapıcı metodu oluşturur.
 public class BaseEntity {
 
+    // FIXME CreatedDate
+    @CreatedDate
     private Long createAt;
 
+    // FIXME LastModifiedDate
+    @LastModifiedDate
     private Long updateAt;
 
-    private boolean state;
+    // FIXME true
+    private boolean state = true;
 
 }

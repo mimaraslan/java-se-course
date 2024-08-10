@@ -5,6 +5,7 @@ import com.mimaraslan.dto.request.DoRegisterRequestDto;
 import com.mimaraslan.dto.response.DoRegisterResponseDto;
 import com.mimaraslan.execption.AuthServiceException;
 import com.mimaraslan.execption.ErrorType;
+import com.mimaraslan.mapper.IAuthMapper;
 import com.mimaraslan.model.Auth;
 import com.mimaraslan.repository.IAuthRepository;
 import com.mimaraslan.utils.JwtTokenManager;
@@ -133,7 +134,7 @@ public class AuthService extends ServiceManager<Auth, Long> {
         }
 
 
-
+/*
         Auth auth = save(
                 Auth.builder()
                     .username(dto.getUsername())
@@ -143,7 +144,16 @@ public class AuthService extends ServiceManager<Auth, Long> {
                     .createAt(System.currentTimeMillis())
                     .build()
         );
+*/
 
+        Auth auth = IAuthMapper.INSTANCE.toAuth(dto);
+
+            auth.setCreateAt(System.currentTimeMillis());
+            auth.setState(true);
+
+        save(auth);
+
+        System.out.println("auth: " + auth);
 
         DoRegisterResponseDto responseDto = new DoRegisterResponseDto();
             responseDto.setId(auth.getId());
