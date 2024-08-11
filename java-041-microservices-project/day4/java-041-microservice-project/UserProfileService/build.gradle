@@ -1,0 +1,6 @@
+dependencies {
+   // implementation libs.postgreSql
+    implementation libs.mySql
+    implementation libs.springBootDataJpa
+}
+

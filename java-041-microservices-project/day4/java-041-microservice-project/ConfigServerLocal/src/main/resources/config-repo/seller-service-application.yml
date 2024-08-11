@@ -1,0 +1,23 @@
+###### Server port ########
+server:
+  port: 9095  # ${SERVICE_PORT}
+
+###### Spring configs ########
+spring:
+  application:
+    name: seller-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Micro_SellerServiceDB
+    username: postgres
+    password: 123456789
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl:
+          auto: update   # şemadaki tablolarimin otomaik olarak güncellenmesi için
+    show-sql: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
