@@ -1,14 +1,12 @@
 package com.mimaraslan.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
-//@EqualsAndHashCode(callSuper = true)
-
-
-@EqualsAndHashCode(callSuper = true)
 @SuperBuilder // bir siniftan nesne türetmek için kullanilir
 @Data // set ve get metodlarini otomatik tanimlar
 @NoArgsConstructor // bos paramtereli hazırlayıcı yapıcı metodu oluşturur.
@@ -16,23 +14,21 @@ import lombok.experimental.SuperBuilder;
 @ToString // nesne bilgisini terminale yazdirmak icindir
 
 @Entity
-@Table(name = "auth")
-public class Auth extends BaseEntity{
+@Table(name = "user_profile")
+public class UserProfile extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
- //   @Size(min = 1, max = 50)
-    @Column(unique = true, nullable = false)
+
+    private Long authId;
     private String username;
-
-//    @Email
-//    @Column(unique = true)
     private String email;
-
-    private String password;
-
     private String address;
+
+    private String phone;
+    private String avatar;
+
 
 }

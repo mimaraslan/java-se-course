@@ -82,6 +82,9 @@ allprojects {
 
         implementation libs.jwt
 
+        implementation libs.springCloudOpenFeign
+
+
     }
 }
 

@@ -27,6 +27,6 @@ public class BaseEntity {
     private Long updateAt;
 
     // FIXME true
-    private boolean state;
+    private boolean state = true;
 
 }

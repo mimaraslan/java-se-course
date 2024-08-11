@@ -2,9 +2,11 @@ package com.mimaraslan.service;
 
 import com.mimaraslan.dto.request.DoLoginRequestDto;
 import com.mimaraslan.dto.request.DoRegisterRequestDto;
+import com.mimaraslan.dto.request.UserProfileSaveRequestDto;
 import com.mimaraslan.dto.response.DoRegisterResponseDto;
 import com.mimaraslan.execption.AuthServiceException;
 import com.mimaraslan.execption.ErrorType;
+import com.mimaraslan.manager.IUserProfileManager;
 import com.mimaraslan.mapper.IAuthMapper;
 import com.mimaraslan.model.Auth;
 import com.mimaraslan.repository.IAuthRepository;
@@ -34,11 +36,15 @@ public class AuthService extends ServiceManager<Auth, Long> {
 
     private final JwtTokenManager jwtTokenManager;
 
+    // FeignClient inject
+    private final IUserProfileManager userProfileManager;
 
-    public AuthService(IAuthRepository repository, JwtTokenManager jwtTokenManager) {
+
+    public AuthService(IAuthRepository repository, JwtTokenManager jwtTokenManager, IUserProfileManager userProfileManager) {
         super(repository);
         this.repository = repository;
         this.jwtTokenManager = jwtTokenManager;
+        this.userProfileManager = userProfileManager;
     }
 
 
@@ -154,6 +160,22 @@ public class AuthService extends ServiceManager<Auth, Long> {
         save(auth);
 
         System.out.println("auth: " + auth);
+
+     /*
+        UserProfileSaveRequestDto saveDto = new UserProfileSaveRequestDto();
+        saveDto.setAuthId(auth.getId());
+        saveDto.setUsername(auth.getUsername());
+        saveDto.setEmail(auth.getEmail());
+
+        userProfileManager.save(saveDto);
+        */
+
+        // UserProfile servisindeki save metodunu çagırıyoruz.
+        // http://localhost:9091/user/save
+
+       userProfileManager.save(IAuthMapper.INSTANCE.fromAuth(auth));
+
+
 
         DoRegisterResponseDto responseDto = new DoRegisterResponseDto();
             responseDto.setId(auth.getId());
