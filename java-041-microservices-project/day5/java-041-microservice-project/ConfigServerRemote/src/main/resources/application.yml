@@ -7,7 +7,7 @@ spring:
       server:
         git:
           uri: ${REMOTE_CONFIG_PATH_PROJECT}
-          default-label: main
+          default-label: master
           username: ${REMOTE_USERNAME}
           password: ${REMOTE_TOKEN_PASSWORD}
 
