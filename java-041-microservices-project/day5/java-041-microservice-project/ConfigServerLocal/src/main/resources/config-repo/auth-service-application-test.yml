@@ -1,0 +1,60 @@
+###### Server port ########
+server:
+  port: 9099  # ${SERVICE_PORT}
+
+###### Spring configs ########
+spring:
+  application:
+    name: auth-service
+  datasource:
+    url: ${DB_URL}/${DB_AUTH_SERVICE_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    properties:
+      hibernate:
+        dialect: ${DB_JPA_DIALECT}
+        hbm2ddl:
+          auto: update   # şemadaki tablolarimin otomaik olarak güncellenmesi için
+    show-sql: true
+
+
+
+
+
+
+####### Server port ########
+#server:
+#  port: 9090
+#
+####### Spring configs ########
+#spring:
+# application:
+#  name: auth-service
+# datasource:
+#   url: jdbc:postgresql://localhost:5432/Micro_AuthServiceDB
+#   username: postgres
+#   password: 123456789
+# jpa:
+#   properties:
+#     hibernate:
+#       dialect: org.hibernate.dialect.PostgreSQLDialect
+#       hbm2ddl:
+#         auto: update   # şemadaki tablolarimin otomaik olarak güncellenmesi için
+#   show-sql: true
+#
+##   profiles:
+##    active: dev
+
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+### JWT configs
+authservice:
+  secret:
+    key: Ankara06
+  issuer: abc
+  expire:
+    date: 300000    # 1000L * 60 * 5

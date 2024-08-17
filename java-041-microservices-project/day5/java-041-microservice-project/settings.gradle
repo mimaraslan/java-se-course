@@ -1,0 +1,11 @@
+rootProject.name = 'java-041-microservice-project'
+include 'AuthService'
+include 'UserProfileService'
+include 'AgentService'
+include 'BuyerService'
+include 'SellerService'
+include 'PropertyService'
+include 'ConfigServerLocal'
+include 'ConfigServerRemote'
+include 'ApiGatewayService'
+

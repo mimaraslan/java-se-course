@@ -1,0 +1,51 @@
+###### Server port ########
+server:
+  port: 9091  # ${SERVICE_PORT}
+
+
+
+spring:
+  application:
+    name: user-profile-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/micro_userprofileservicedb
+    username: root
+    password: 123456789
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        hbm2ddl:
+          auto: update
+
+
+
+
+
+
+
+###### Spring configs ########
+#spring:
+# application:
+#  name: user-profile-service
+# datasource:
+#   url: jdbc:postgresql://localhost:5432/Micro_UserProfileServiceDB
+#   username: postgres
+#   password: 123456789
+# jpa:
+#   properties:
+#     hibernate:
+#       dialect: org.hibernate.dialect.PostgreSQLDialect
+#       hbm2ddl:
+#         auto: update   # şemadaki tablolarimin otomaik olarak güncellenmesi için
+#   show-sql: true
+
+#   profiles:
+#    active: dev
+
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
