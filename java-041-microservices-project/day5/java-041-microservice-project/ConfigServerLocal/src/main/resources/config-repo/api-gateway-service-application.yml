@@ -12,28 +12,64 @@ spring:
           uri: http://localhost:9090
           predicates:
             - Path=/auth/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: auth
+                fallbackUri: forward:/fallback/fallbackForAuth
+
 
         - id: user-profile-service
           uri: http://localhost:9091
           predicates:
             - Path=/user/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: user
+                fallbackUri: forward:/fallback/fallbackForUser
+
+#  localhost:9091/user/fallbackForUser
+
 
         - id: agent-service
           uri: http://localhost:9092
           predicates:
             - Path=/agent/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: agent
+                fallbackUri: forward:/fallback/fallbackForAgent
 
         - id: buyer-service
           uri: http://localhost:9093
           predicates:
             - Path=/buyer/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: buyer
+                fallbackUri: forward:/fallback/fallbackForBuyer
+
 
         - id: property-service
           uri: http://localhost:9094
           predicates:
             - Path=/property/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: property
+                fallbackUri: forward:/fallback/fallbackForProperty
+
 
         - id: seller-service
           uri: http://localhost:9095
           predicates:
             - Path=/seller/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: seller
+                fallbackUri: forward:/fallback/fallbackForSeller
