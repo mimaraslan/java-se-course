@@ -86,6 +86,13 @@ allprojects {
 
         implementation libs.springCloudConfigClient
 
+        implementation libs.springBootActuator
+        implementation libs.springBootValidation
+
+        implementation libs.micrometerTracingBridgeBrave
+        implementation libs.zipkinReporterBrave
+        implementation libs.micrometerObservation
+
     }
 }
 

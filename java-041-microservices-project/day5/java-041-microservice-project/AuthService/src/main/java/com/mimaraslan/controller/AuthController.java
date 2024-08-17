@@ -85,6 +85,18 @@ public class AuthController {
 
 
 
+    // http://localhost:9090/auth/hello
+    @GetMapping("/hello")
+    public String hello (){
+        return "AuthService Hello";
+    }
+
+
+    // http://localhost:9090/auth/info
+    @GetMapping("/info")
+    public String info (){
+        return "INFO: AuthService";
+    }
 
 
 

@@ -27,12 +27,6 @@ public class UserProfileController {
     }
     */
 
-    //  http://localhost:9091/user/hello
-    @GetMapping("/hello")
-    public String hello (){
-        return "UserProfileService Hi";
-    }
-
 
     //  http://localhost:9091/user/save
     @PostMapping(ENDPOINT_SAVE)
@@ -55,6 +49,23 @@ public class UserProfileController {
     public  ResponseEntity <List<UserProfile>> findAll (@RequestParam String token) {
         return ResponseEntity.ok(userProfileService.findAll(token)); }
 */
+
+
+
+    // http://localhost:9091/user/hello
+    @GetMapping("/hello")
+    public String hello (){
+        return "UserProfileService Hello";
+    }
+
+
+    // http://localhost:9091/user/info
+    @GetMapping("/info")
+    public String info (){
+        return "INFO: AuthService";
+    }
+
+
 
 
 }
