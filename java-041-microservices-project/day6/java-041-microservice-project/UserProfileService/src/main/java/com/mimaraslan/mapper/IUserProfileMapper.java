@@ -2,6 +2,7 @@ package com.mimaraslan.mapper;
 
 import com.mimaraslan.dto.request.UserProfileSaveRequestDto;
 import com.mimaraslan.model.UserProfile;
+import com.mimaraslan.rabbitmq.model.AuthSaveModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -18,4 +19,7 @@ public interface IUserProfileMapper {
 
 
     UserProfile toUserProfile(final UserProfileSaveRequestDto dto);
+
+    UserProfile toUserProfile(final AuthSaveModel model);
+
 }

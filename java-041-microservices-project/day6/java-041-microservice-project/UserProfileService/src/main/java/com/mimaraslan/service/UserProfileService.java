@@ -3,6 +3,7 @@ package com.mimaraslan.service;
 import com.mimaraslan.dto.request.UserProfileSaveRequestDto;
 import com.mimaraslan.mapper.IUserProfileMapper;
 import com.mimaraslan.model.UserProfile;
+import com.mimaraslan.rabbitmq.model.AuthSaveModel;
 import com.mimaraslan.repository.IUserProfileRepository;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +41,9 @@ public class UserProfileService extends ServiceManager<UserProfile, Long> {
         save(IUserProfileMapper.INSTANCE.toUserProfile(dto));
         return true;
 
+    }
+
+    public void saveRabbit(AuthSaveModel model) {
+        save(IUserProfileMapper.INSTANCE.toUserProfile(model));
     }
 }
