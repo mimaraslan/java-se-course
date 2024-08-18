@@ -40,10 +40,9 @@ public class UserProfileService extends ServiceManager<UserProfile, Long> {
 
         save(IUserProfileMapper.INSTANCE.toUserProfile(dto));
         return true;
-
     }
 
-    public void saveRabbit(AuthSaveModel model) {
+    public void save(AuthSaveModel model) {
         save(IUserProfileMapper.INSTANCE.toUserProfile(model));
     }
 }

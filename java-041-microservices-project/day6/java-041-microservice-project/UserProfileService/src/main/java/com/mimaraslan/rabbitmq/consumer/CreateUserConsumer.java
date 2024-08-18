@@ -1,6 +1,5 @@
 package com.mimaraslan.rabbitmq.consumer;
 
-import com.mimaraslan.dto.request.UserProfileSaveRequestDto;
 import com.mimaraslan.rabbitmq.model.AuthSaveModel;
 import com.mimaraslan.service.UserProfileService;
 import lombok.RequiredArgsConstructor;
@@ -16,25 +15,11 @@ public class CreateUserConsumer {
     @RabbitListener(queues = "queue-auth")
     public void createUserFromQueue(AuthSaveModel model) {
 
-   //     System.out.println("AuthSaveModel ===========> "+model.getUsername());
+        System.out.println("AuthSaveModel from Rabbit MQ : "
+                            + model.getUsername());
 
-   //     userProfileService.saveRabbit(model);
+       userProfileService.save(model);
 
-        System.out.println("AuthSaveModel From Rabbit MQ: " + model);
-        userProfileService.save(
-                UserProfileSaveRequestDto.builder()
-                        .email(model.getEmail())
-                        .username(model.getUsername())
-                        .authId(model.getAuthId())
-                        .build() );
-
-        /*
-        UserProfile.builder()
-                .authId(model.getAuthId())
-                .username(model.getUsername())
-                .email(model.getEmail())
-                .build()
-        */
     }
 
 }
