@@ -36,3 +36,16 @@ spring:
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
+
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5

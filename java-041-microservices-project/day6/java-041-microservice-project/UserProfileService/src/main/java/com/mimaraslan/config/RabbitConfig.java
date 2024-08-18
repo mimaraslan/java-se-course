@@ -36,6 +36,7 @@ public class RabbitConfig {
         return new Queue(queueAuth);
     }
 
+
     @Bean
     public MessageConverter messageConverter(){
         return new Jackson2JsonMessageConverter();

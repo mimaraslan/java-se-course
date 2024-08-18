@@ -3,9 +3,9 @@ package com.mimaraslan.rabbitmq.producer;
 import com.mimaraslan.rabbitmq.model.AuthSaveModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 @RequiredArgsConstructor
 public class CreateUserProducer {
 

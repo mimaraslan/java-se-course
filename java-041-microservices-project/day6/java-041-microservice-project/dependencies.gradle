@@ -60,8 +60,12 @@ ext {
             zipkinReporterBrave : "io.zipkin.reporter2:zipkin-reporter-brave",
             micrometerObservation : "io.micrometer:micrometer-observation",
 
-            springBootAmqp                  : "org.springframework.boot:spring-boot-starter-amqp:$versions.springBoot"
+            springBootAmqp                  : "org.springframework.boot:spring-boot-starter-amqp:$versions.springBoot",
 
+
+            springCloudAdminStarterServer   : "de.codecentric:spring-boot-admin-starter-server:3.2.2",
+            springCloudEurekaServer         : "org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:$versions.springCloud",
+            springCloudEurekaClient         : "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:$versions.springCloud"
 
     ]
 }

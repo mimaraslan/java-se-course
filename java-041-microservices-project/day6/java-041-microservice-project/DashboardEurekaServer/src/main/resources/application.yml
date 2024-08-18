@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+  config:
+    import: "configserver:"
+  application:
+    name: dashboard-eureka-server-application
+

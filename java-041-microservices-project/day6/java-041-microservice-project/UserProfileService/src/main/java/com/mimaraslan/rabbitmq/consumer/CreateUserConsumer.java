@@ -5,9 +5,10 @@ import com.mimaraslan.rabbitmq.model.AuthSaveModel;
 import com.mimaraslan.service.UserProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 @RequiredArgsConstructor
 public class CreateUserConsumer {
 

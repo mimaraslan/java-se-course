@@ -95,6 +95,8 @@ allprojects {
 
         implementation libs.springBootAmqp
 
+        implementation libs.springCloudEurekaClient
+
     }
 }
 

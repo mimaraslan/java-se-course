@@ -1,0 +1,7 @@
+
+dependencies {
+
+    implementation libs.springCloudAdminStarterServer
+    implementation libs.springCloudEurekaServer
+}
+

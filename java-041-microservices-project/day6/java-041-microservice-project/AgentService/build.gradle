@@ -1,4 +1,10 @@
 dependencies {
     implementation libs.postgreSql
     implementation libs.springBootDataJpa
+
+  //  implementation libs.springCloudEurekaClient
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.1.0'
+    implementation 'org.springframework.cloud:spring-cloud-netflix-eureka-client:4.1.0'
+
 }
