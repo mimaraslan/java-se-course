@@ -19,7 +19,6 @@ public class CreateUserConsumer {
                             + model.getUsername());
 
        userProfileService.save(model);
-
     }
 
 }

@@ -7,7 +7,6 @@ import com.mimaraslan.rabbitmq.model.AuthSaveModel;
 import com.mimaraslan.repository.IUserProfileRepository;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class UserProfileService extends ServiceManager<UserProfile, Long> {
 
