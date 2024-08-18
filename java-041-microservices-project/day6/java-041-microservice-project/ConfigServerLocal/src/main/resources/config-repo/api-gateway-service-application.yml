@@ -75,6 +75,13 @@ spring:
                 fallbackUri: forward:/fallback/fallbackForSeller
 
 
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "user"
+    password: "user"
+
+
 management:
   tracing:
     sampling:

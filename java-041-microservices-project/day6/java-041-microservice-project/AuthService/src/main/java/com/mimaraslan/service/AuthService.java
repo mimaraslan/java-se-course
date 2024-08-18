@@ -9,6 +9,8 @@ import com.mimaraslan.execption.ErrorType;
 import com.mimaraslan.manager.IUserProfileManager;
 import com.mimaraslan.mapper.IAuthMapper;
 import com.mimaraslan.model.Auth;
+import com.mimaraslan.rabbitmq.model.AuthSaveModel;
+import com.mimaraslan.rabbitmq.producer.CreateUserProducer;
 import com.mimaraslan.repository.IAuthRepository;
 import com.mimaraslan.utils.JwtTokenManager;
 import org.springframework.stereotype.Service;
@@ -39,12 +41,16 @@ public class AuthService extends ServiceManager<Auth, Long> {
     // FeignClient inject
     private final IUserProfileManager userProfileManager;
 
+    private final CreateUserProducer createUserProducer;
 
-    public AuthService(IAuthRepository repository, JwtTokenManager jwtTokenManager, IUserProfileManager userProfileManager) {
+
+
+    public AuthService(IAuthRepository repository, JwtTokenManager jwtTokenManager, IUserProfileManager userProfileManager, CreateUserProducer createUserProducer) {
         super(repository);
         this.repository = repository;
         this.jwtTokenManager = jwtTokenManager;
         this.userProfileManager = userProfileManager;
+        this.createUserProducer = createUserProducer;
     }
 
 
@@ -173,8 +179,17 @@ public class AuthService extends ServiceManager<Auth, Long> {
         // UserProfile servisindeki save metodunu çagırıyoruz.
         // http://localhost:9091/user/save
 
-       userProfileManager.save(IAuthMapper.INSTANCE.fromAuth(auth));
 
+        // FeignClient
+        // userProfileManager.save(IAuthMapper.INSTANCE.fromAuth(auth));
+
+
+        // RabbitMQ
+        createUserProducer.save(AuthSaveModel.builder()
+                        .authId(auth.getId())
+                        .username(auth.getUsername())
+                        .email(auth.getEmail())
+                .build());
 
 
         DoRegisterResponseDto responseDto = new DoRegisterResponseDto();
