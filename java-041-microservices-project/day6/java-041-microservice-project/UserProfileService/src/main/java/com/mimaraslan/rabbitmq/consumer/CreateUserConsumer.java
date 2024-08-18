@@ -1,26 +1,32 @@
 package com.mimaraslan.rabbitmq.consumer;
 
-import com.mimaraslan.model.UserProfile;
+import com.mimaraslan.dto.request.UserProfileSaveRequestDto;
 import com.mimaraslan.rabbitmq.model.AuthSaveModel;
 import com.mimaraslan.service.UserProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Component
 @RequiredArgsConstructor
 public class CreateUserConsumer {
 
-    private UserProfileService userProfileService;
+    private final UserProfileService userProfileService;
 
     @RabbitListener(queues = "queue-auth")
     public void createUserFromQueue(AuthSaveModel model) {
 
-        System.out.println("AuthSaveModel ===========> "+model.getUsername());
+   //     System.out.println("AuthSaveModel ===========> "+model.getUsername());
 
-        userProfileService.saveRabbit(model);
+   //     userProfileService.saveRabbit(model);
 
+        System.out.println("AuthSaveModel From Rabbit MQ: " + model);
+        userProfileService.save(
+                UserProfileSaveRequestDto.builder()
+                        .email(model.getEmail())
+                        .username(model.getUsername())
+                        .authId(model.getAuthId())
+                        .build() );
 
         /*
         UserProfile.builder()
