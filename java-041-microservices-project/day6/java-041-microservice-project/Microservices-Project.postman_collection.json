@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "2d0be5ea-2d27-4945-9a28-a32692f29984",
+		"_postman_id": "68128186-665a-48cd-bd44-1ba6ff2f58bf",
 		"name": "Microservices-Project",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "77926",
-		"_collection_link": "https://interstellar-capsule-247109.postman.co/workspace/Java-2024~f73524f9-dba0-4763-8e27-e4f79695829d/collection/77926-2d0be5ea-2d27-4945-9a28-a32692f29984?action=share&source=collection_link&creator=77926"
+		"_collection_link": "https://interstellar-capsule-247109.postman.co/workspace/Java-2024~f73524f9-dba0-4763-8e27-e4f79695829d/collection/77926-68128186-665a-48cd-bd44-1ba6ff2f58bf?action=share&source=collection_link&creator=77926"
 	},
 	"item": [
 		{
@@ -194,6 +194,150 @@
 									"key": "token",
 									"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwic2VydmljZU5hbWUiOiJBdXRoU2VydmljZSIsImlzcyI6ImFiYyIsImlhdCI6MTcyMjA4NjYyMiwiZXhwIjoxNzIyMDg2OTIyfQ.pp7PPE6qRtnNuc8k-IQgUguyOH_POao7O0-pSFVgxED_E02VA-nbJ3jAxKVU4njhJAwZLBLLjCi1rZZixWmgFg"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth/hello",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/auth/hello",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"auth",
+								"hello"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserProfile",
+			"item": [
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"authId\": 20,\r\n  \"username\": \"harun\",\r\n  \"email\": \"harun@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/user/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"user",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hello",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/user/hello",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"user",
+								"hello"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Buyer",
+			"item": [
+				{
+					"name": "hello",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/buyer/hello",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"buyer",
+								"hello"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Seller",
+			"item": [
+				{
+					"name": "hello",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/seller/hello",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"seller",
+								"hello"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Property",
+			"item": [
+				{
+					"name": "hello",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/property/hello",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"property",
+								"hello"
 							]
 						}
 					},
