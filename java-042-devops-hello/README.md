@@ -1,29 +1,106 @@
-# Getting Started
+cd C:\Users\YOUR_PC_NAME\Documents\workspace\java-se-course\java-042-devops-hello
 
-### Reference Documentation
 
-For further reference, please consider the following sections:
+docker build  --build-arg  JAR_FILE=build/libs/java-042-devops-hello-1.0.0.jar -t  mimaraslan/java-042-devops-hello:v001 .
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.2.9/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.2.9/maven-plugin/reference/html/#build-image)
-* [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/3.2.9/reference/htmlsingle/index.html#actuator)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/3.2.9/reference/htmlsingle/index.html#web)
+docker build  --build-arg  JAR_FILE=target/java-042-devops-hello-1.0.0.jar -t  mimaraslan/java-042-devops-hello:v001 .
 
-### Guides
+docker pull mimaraslan/java-042-devops-hello:v001
 
-The following guides illustrate how to use some features concretely:
 
-* [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
 
-### Maven Parent overrides
+docker build  --build-arg  JAR_FILE=target/java-042-devops-hello-1.0.1.jar -t  mimaraslan/java-042-devops-hello:v002 .
 
-Due to Maven's design, elements are inherited from the parent POM to the project POM.
-While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the
-parent.
-To prevent this, the project POM contains empty overrides for these elements.
-If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
+docker pull mimaraslan/java-042-devops-hello:v002
 
+
+docker build  --build-arg  JAR_FILE=target/java-042-devops-hello-1.0.1.jar -t  mimaraslan/java-042-devops-hello:latest .
+
+docker pull mimaraslan/java-042-devops-hello:latest
+
+docker pull mimaraslan/java-042-devops-hello
+
+
+
+docker pull postgres
+
+docker run     -p 9999:5432     --name my-postgres -e POSTGRES_PASSWORD=123456789 -d postgres
+docker run     -p 9992:5432     --name my-postgres2 -e POSTGRES_PASSWORD=123456789 -d postgres
+
+
+docker pull mysql
+
+docker run   -p 9090:3306    --name my-mysql   -e MYSQL_ROOT_PASSWORD=123456789  -d  mysql:latest
+
+docker run   -p 9091:3306    --name my-mysql2   -e MYSQL_ROOT_PASSWORD=123456789  -d  mysql:latest
+
+
+
+
+
+gcloud auth login
+
+gcloud components install gke-gcloud-auth-plugin
+
+
+kubectl get nodes
+
+
+DockerHub'dan image'i çekip Kubernetes içinde container'a çevirip Pod içine koyacak.
+
+kubectl run  mypod   --image=mimaraslan/java-042-devops-hello:latest
+
+
+
+
+kubectl get pod
+
+kubectl get po
+
+kubectl get pods
+
+
+
+
+
+kubectl config get-contexts
+
+
+
+kubectl run  mypod1   --image=mimaraslan/java-042-devops-hello:v001
+
+kubectl run  mypod2   --image=mimaraslan/java-042-devops-hello:v002
+
+kubectl run  mypod3   --image=mimaraslan/java-042-devops-hello:v002
+
+kubectl run  mypod4   --image=mimaraslan/java-042-devops-hello:v002
+
+kubectl run  mypod5   --image=mimaraslan/java-042-devops-hello
+
+kubectl get pods -o wide
+
+kubectl describe pod mypod5
+
+
+kubectl delete pod mypod1
+kubectl delete pod mypod2
+kubectl delete pod mypod3
+kubectl delete pod mypod4
+kubectl delete pod mypod5
+
+
+
+kubectl run  mypod1   --image=mimaraslan/java-042-devops-hello:latest
+kubectl run  mypod2   --image=mimaraslan/java-042-devops-hello:v002
+kubectl run  mypod3   --image=mimaraslan/java-042-devops-hello:v001
+kubectl run  mypod4   --image=mimaraslan/java-042-devops-hello:v008
+kubectl run  mypod5   --image=mimaraslan/java-042-devops-hello
+
+kubectl delete pod mypod5
+
+
+kubectl run  mypod6   --image=postgres
+
+kubectl run  mypod7   --image=mysql
+
+kubectl run  mypod8   --image=mimaraslan/java-042-devops-hello:v008
