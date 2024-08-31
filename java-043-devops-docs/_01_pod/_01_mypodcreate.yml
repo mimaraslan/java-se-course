@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypodcreate
+  labels:
+    name: docker001-hello
+    type: back-end
+    app: hello-service
+    project-name: mydemo
+spec:
+  containers:
+  - name: docker001-hello
+    image: mimaraslan/java-042-devops-hello:v001
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 9090

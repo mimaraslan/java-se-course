@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: docker-loadbalancer
+spec:
+  selector:
+    app: docker001-hello
+  type: LoadBalancer
+  ports:
+  - name: docker001-hello-port
+    port: 8085
+    targetPort: 8080
